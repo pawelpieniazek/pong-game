@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pong</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles_index.css')}}">
+    
+</head>
+<body>
+    <div id="pong">
+        <h1>PONG</h1>
+        <div>
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Single Player
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <button class="dropdown-item" id='easy'>Easy</button>
+                    <button class="dropdown-item" id='medium'>Medium</button>
+                    <button class="dropdown-item" id='hard'>Hard</button>
+                </div>
+            </div>
+            <button id='multi'>Multi Player</button>
+        </div>
+        <br>
+        
+        <!-- THIS IS MULTI -->
+    
+        <div id="multidiv">
+            <div class="container">
+                <div class="row">
+                    <div class="col" >
+                        <div id="nameleft">
+                            <input type='text' id="usernameleft" maxlength="20" placeholder="Type your name..." size="15">
+                            <button id='submitusernameleft' type='submit' disabled>OK</button>
+                        </div>
+
+                        <div id='instructionsleft'>
+                            <p>Use W and S to control your paddle</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="nameright">
+                            <input type='text' id="usernameright" maxlength="20" placeholder="Type your name..." size="15">
+                            <button id='submitusernameright' type='submit' disabled>OK</button>
+                        </div>
+                    
+                        <div id='instructionsright'>
+                            <p>Use 
+                                <svg class="bi bi-arrow-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8 3.707 5.354 6.354a.5.5 0 1 1-.708-.708l3-3z"/>
+                              </svg> 
+                              and 
+                              <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                                <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
+                              </svg> 
+                              to control your paddle</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="playmulti">
+            <a href="multi"><button>Play</button></a>
+        </div>
+    
+        <!-- THIS IS SINGLE  -->
+        <div id="singlediv">
+            <div id="name">
+                <input type='text' id="username" maxlength="20" placeholder="Type your name..." size="15">
+                <button id='submitusername' type='submit' disabled>OK</button>
+            </div>
+        
+            <div id='instructions'>
+                <p>Use 
+                    <svg class="bi bi-arrow-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+                    <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8 3.707 5.354 6.354a.5.5 0 1 1-.708-.708l3-3z"/>
+                  </svg> 
+                  and 
+                  <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                    <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
+                  </svg> 
+                  to control your paddle</p>
+            </div>
+            <div id="level">
+                <div id='playeasy'>
+                    <a href="singleeasy"><button>Play</button></a>
+                </div>
+                <div id="playmedium">
+                    <a href="singlemedium"><button>Play</button></a>
+                </div>
+                <div id="playhard">
+                    <a href="singlehard"><button>Play</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="scores" class="container">
+        <h4 style="padding: 20px 0;">Scores</h4>
+        <table id="ranking" class="col">
+
+        </table>
+    </div>
+
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+</body>
+</html>

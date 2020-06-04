@@ -1,0 +1,55 @@
+body {
+    margin-top: 100px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+}
+#pong {
+    margin-right: 180px;
+}
+h1 {
+    margin-bottom: 50px;
+    font-size: 120px;
+}
+#name, #nameleft, #nameright {
+    margin: 30px auto;
+}
+#multidiv, #singlediv, #playeasy, #playmedium, #playhard, #playmulti, #name {
+    display: none;
+}
+button {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: larger;
+}
+input {
+    padding: 10px;
+}
+#instructions, #instructionsleft, #instructionsright {
+    margin-bottom: 30px;
+}
+/* SCORES */
+#scores {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    right: 0px;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    width: 180px;
+}
+#ranking, #points {
+    color: white;
+}
+tr {
+    color: #aaa;
+}
+tr:hover {
+    color: white;
+    background-color: #222;
+}

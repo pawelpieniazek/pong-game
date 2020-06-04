@@ -1,0 +1,86 @@
+body {
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+#pong {
+    margin-top: 50px;
+}
+#scores {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    overflow: auto;
+}
+canvas {
+    border: 6px solid white;
+}
+@media(max-width: 1000px){
+    canvas {
+        width: 90%; 
+    }
+    #scores {
+        position: relative;
+        width: 100vw;
+        overflow: auto;
+        max-height: 40vh;
+    }
+}
+@media(min-width:1001px){
+    #scores {
+        position: fixed;
+        top: 0;
+        right: 0px;
+        height: 100vh;
+        width: 180px;
+    }
+    canvas {
+        margin-right: 180px;
+        width: 80%;
+    }
+}
+#annihilation {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: 900;
+    text-shadow: 3px 3px #FF0000;
+    position: relative;
+    bottom: 80px;
+}
+/* SCORES */
+
+#ranking, #points {
+    color: white;
+}
+table {
+    width:100%
+}
+tr {
+  color: #aaa;
+}
+tr:hover {
+    color: white;
+    background-color: #222;
+}
+/* MODAL */
+.close {
+  color:gray;
+}
+.close:hover {
+  color: white;
+  opacity: 1;
+}
+.modal-header, .modal-body {
+  border-bottom: 1px solid rgb(140, 140, 140);
+}
+.modal-footer {
+  border-top: 0;
+}
+.modal-content {
+  border: 1px solid gray;
+  background-color: #000;
+  color: white;
+}
