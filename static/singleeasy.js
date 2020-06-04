@@ -1,5 +1,3 @@
-
-
 let username = localStorage.getItem('username');
 
 const GAME_HEIGHT = 360;
