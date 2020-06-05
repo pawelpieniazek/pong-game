@@ -11,10 +11,10 @@ h1 {
     margin-bottom: 50px;
     font-size: 120px;
 }
-#name, #nameleft, #nameright {
+#name, #nameleft, #nameright, #teamname {
     margin: 30px auto;
 }
-#multidiv, #singlediv, #playeasy, #playmedium, #playhard, #playmulti, #name {
+#multidiv, #singlediv, #playeasy, #playmedium, #playhard, #playmulti, #name, #multivscomputerdiv {
     display: none;
 }
 button {
@@ -29,7 +29,7 @@ button {
 input {
     padding: 10px;
 }
-#instructions, #instructionsleft, #instructionsright {
+#instructions, #instructionsleft, #instructionsright, #teaminstructionsleft, #teaminstructionsright {
     margin-bottom: 30px;
 }
 /* SCORES */

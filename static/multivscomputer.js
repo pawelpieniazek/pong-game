@@ -1,4 +1,4 @@
-let username = localStorage.getItem('username');
+let teamname = localStorage.getItem('teamname');
 
 const GAME_HEIGHT = 360;
 const GAME_WIDTH = 640;
@@ -277,7 +277,7 @@ const draw = function() {
     ctx.fillText(scoreLeft, GAME_WIDTH/2 - 20, GAME_HEIGHT - 25);
     ctx.fillText(scoreRight, GAME_WIDTH/2 + 20, GAME_HEIGHT - 25);
     ctx.fillText("Computer", GAME_WIDTH/2 - 40, GAME_HEIGHT - 10);
-    ctx.fillText(username, GAME_WIDTH/2 + 20, GAME_HEIGHT - 10);
+    ctx.fillText(teamname, GAME_WIDTH/2 + 20, GAME_HEIGHT - 10);
 
     ctx.fillStyle = "rgb(256,256,256)";
     
@@ -329,11 +329,6 @@ let checkMiddle = (player, ball) => {
         } else {
             ball.speedX *= -1;
             ball.speedX += (Math.abs(ball.speedX)/ball.speedX)*0.4;
-            if (ball.speedY < 0.05 && ball.speedY > -0.05) {
-                ball.speedY = 0;
-            } else {
-                ball.speedY *= 0.8;
-            }
         }
     }
 }

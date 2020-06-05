@@ -27,7 +27,15 @@
                     <button class="dropdown-item" id='hard'>Hard</button>
                 </div>
             </div>
-            <button id='multi'>Multi Player</button>
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop2" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Multi Player
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                    <button class="dropdown-item" id='multi'>Multi Player</button>
+                    <button class="dropdown-item" id='multivscomputer'>Multi Player vs Computer</button>
+                </div>
+            </div>
         </div>
         <br>
         
@@ -71,6 +79,36 @@
         </div>
         <div id="playmulti">
             <a href="multi"><button>Play</button></a>
+        </div>
+        <!-- multi vs computer -->
+        <div id="multivscomputerdiv">
+            <div id="teamname">
+                <input type='text' id="teamnameinput" maxlength="20" placeholder="Team name..." size="15">
+                <button id='submitteamname' type='submit' disabled>OK</button>
+            </div>
+            <div id="teaminstructions">
+                <div class="row">
+                    <div id="teaminstructionsleft" class="col">
+                        <p>Use W and S to control your paddle</p>
+                    </div>
+                    <div id="teaminstructionsright" class="col">
+                        <p>Use 
+                            <svg class="bi bi-arrow-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+                            <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8 3.707 5.354 6.354a.5.5 0 1 1-.708-.708l3-3z"/>
+                          </svg> 
+                          and 
+                          <svg class="bi bi-arrow-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4.646 9.646a.5.5 0 0 1 .708 0L8 12.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd" d="M8 2.5a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-1 0V3a.5.5 0 0 1 .5-.5z"/>
+                          </svg> 
+                          to control your paddle</p>
+                    </div>
+                </div>
+            </div>
+            <div id="playmultivscomputer">
+                <a href="multivscomputer"><button>Play</button></a>
+            </div>
         </div>
     
         <!-- THIS IS SINGLE  -->

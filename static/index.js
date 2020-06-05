@@ -27,6 +27,7 @@ socket.on('ranking', (data) => {
     // right
 $('#multi').on('click', function(){
     $('#singlediv').hide()
+    $('#multivscomputerdiv').hide()
     $('#multidiv').show()
     $('#playmulti').show()
 })
@@ -61,6 +62,30 @@ $('#submitusernameleft').on('click', function(){
     localStorage.setItem('usernameleft', $('#usernameleft').val())
     $('#usernameleft').val("")
     
+})
+    // multi vs computer
+$('#multivscomputer').on('click', function(){
+    $('#singlediv').hide()
+    $('#multidiv').hide()
+    $('#playmulti').hide()
+    $('#multivscomputerdiv').show()
+    $('#playmultivscomputer').show()
+})
+
+$('#teamnameinput').on('keyup', function(key) {
+    if($(this).val().length > 0){
+        $('#submitteamname').attr('disabled', false)
+        if(key.keyCode == 13){
+            $('#submitteamname').click()
+        }
+    }
+    else{
+        $('#submitteamname').attr('disabled', true)
+    }
+});
+$('#submitteamname').on('click', function(){
+    localStorage.setItem('teamname', $('#teamnameinput').val());
+    $('#teamnameinput').val("")
 })
 
 // SINGLE
@@ -103,6 +128,7 @@ $('#hard').on('click', function(){
 })
 
 let show = () => {
+    $('#multivscomputerdiv').hide()
     $('#multidiv').hide()
     $('#playmulti').hide()
     $('#singlediv').show()
