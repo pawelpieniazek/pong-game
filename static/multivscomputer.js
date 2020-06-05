@@ -50,7 +50,7 @@ let playerRightOne = {
     }
 };
 let playerRightTwo = {
-    x: GAME_WIDTH - 80,
+    x: GAME_WIDTH - 100,
     y: GAME_HEIGHT / 2,
     w:4,
     h:80,
@@ -122,35 +122,35 @@ let movePlayerLeft = function(direction) {
 
 let movePlayerRightOne = function(event) {
     if (event.code === "ArrowUp") {
-        playerRight.isMoving = true;
-        playerRight.speedY = -6
+        playerRightOne.isMoving = true;
+        playerRightOne.speedY = -6
     } else if (event.code === "ArrowDown") {       
-        playerRight.isMoving = true
-        playerRight.speedY = 6
+        playerRightOne.isMoving = true
+        playerRightOne.speedY = 6
     };  
 };
 let stopPlayerRightOne = function(event) {
     if (event.code === "ArrowUp") {
-        playerRight.isMoving = false;
+        playerRightOne.isMoving = false;
     } else if (event.code === "ArrowDown") {       
-        playerRight.isMoving = false;
+        playerRightOne.isMoving = false;
     };
 };
 
 let movePlayerRightTwo = function(event) {
     if (event.code === "KeyW") {
-        playerRight.isMoving = true;
-        playerRight.speedY = -6
+        playerRightTwo.isMoving = true;
+        playerRightTwo.speedY = -6
     } else if (event.code === "KeyS") {       
-        playerRight.isMoving = true
-        playerRight.speedY = 6
+        playerRightTwo.isMoving = true
+        playerRightTwo.speedY = 6
     };  
 };
 let stopPlayerRightTwo = function(event) {
     if (event.code === "KeyW") {
-        playerRight.isMoving = false;
+        playerRightTwo.isMoving = false;
     } else if (event.code === "KeyS") {       
-        playerRight.isMoving = false;
+        playerRightTwo.isMoving = false;
     };
 };
 
@@ -209,7 +209,7 @@ const update = function() {
     if(ball.isMoving){
     ball.x = ball.x + ball.speedX;
     ball.y = ball.y + ball.speedY;
-        if (ball.speedX < 0 && ball.x < GAME_WIDTH * 0.35){
+        if (ball.speedX < 0 && ball.x < GAME_WIDTH * 0.55){
             movePlayerLeft(ball.speedX);
         } else {
             playerLeft.isMoving = false;
@@ -242,7 +242,6 @@ const update = function() {
         $('#lose').click();
     } else if (scoreRight === 5) {
         gameLive = false;
-        socket.emit('points', {'username': username, 'points': 1})
         $('#winModalLabel').text('Congratulations, '+ username + "!")
         $('#win').click();
     };
@@ -325,12 +324,16 @@ let checkBottom = (player, ball) => {
 }
 let checkMiddle = (player, ball) => {
     if (ball.y > player.y - player.h/6 && ball.y < player.y + player.h/6){
-        ball.speedX *= -1;
-        ball.speedX += (Math.abs(ball.speedX)/ball.speedX)*0.4;
-        if (ball.speedY < 0.05 && ball.speedY > -0.05) {
-            ball.speedY = 0;
+        if (ball.speedX > 20 || ball.speedX < -20){
+            ball.speedX *= -1;
         } else {
-            ball.speedY *= 0.8;
+            ball.speedX *= -1;
+            ball.speedX += (Math.abs(ball.speedX)/ball.speedX)*0.4;
+            if (ball.speedY < 0.05 && ball.speedY > -0.05) {
+                ball.speedY = 0;
+            } else {
+                ball.speedY *= 0.8;
+            }
         }
     }
 }

@@ -54,5 +54,9 @@ def hard():
 def multi():
     return render_template("multi.html")
 
+@app.route("/multivscomputer", methods = ['GET', 'POST'])
+def multivscomputer():
+    return render_template("multivscomputer.html")
+
 if __name__ == '__main__':
     socketio.run(app, debug=True, use_reloader=True)
